@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de pizza</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+</head>
+<body>
+    <div class="container">
+        <div class="row">  
+            <h1>Calculadora de pizza &#127829</h1>
+        </div>
+    </div>
+    <div class="container">
+        <form id="FormPromo"class="row g-3">
+            <div class="col-md-6">
+              <label for="inputPizzaria4" class="form-label">Pizzaria</label>
+              <input type="Pizzaria" class="form-control" id="inputPizzaria">
+            </div>
+            <div class="col-md-6">
+              <label for="inputPromocao4" class="form-label">Promoção</label>
+              <input type="Promocao" class="form-control" id="inputPromocao">
+            </div>
+            <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckBorda">
+                  <label class="form-check-label" for="gridCheckBorda">
+                    Borda recheada
+                  </label>
+                </div>
+            </div>
+            <div class="col-2">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckRefri">
+                  <label class="form-check-label" for="gridCheckRefri">
+                    Refri
+                  </label>
+                </div>
+            </div>
+            <div class="col-8">
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="gridCheckBroto">
+                  <label class="form-check-label" for="gridCheckBroto">
+                    Broto doce
+                  </label>
+                </div>
+            </div>
+            <br>    
+            <div class="col-md-2">
+              <label for="inputValor" class="form-label">Tamanho</label>
+              <input type="number" class="form-control" id="inputValor">
+            </div>
+            <div class="col-md-2">
+              <label for="inputMedida" class="form-label">Medida</label>
+              <select id="inputMedida" class="form-select">
+                <option selected>Choose...</option>
+                <option>Raio</option>
+                <option>Diametro</option>
+                <option>Circunferencia</option>
+              </select>
+            </div>
+            <div class="col-md-2">
+              <label for="inputFrete" class="form-label">Frete</label>
+              <input type="number" class="form-control" id="inputFrete">
+            </div>
+            <div class="col-md-2">
+                <label for="inputValor" class="form-label">Valor</label>
+                <input type="number" class="form-control" id="inputValor">
+            </div>
+            <div></div>
+            <div class="col-md-2">
+                <label for="inputCupom" class="form-label">Cupom %</label>
+                <input type="number" class="form-control" id="inputCupom">
+            </div>
+            <div class="col-md-2">
+                <label for="inputDesconto" class="form-label">Desconto</label>
+                <input type="number" class="form-control" id="inputDesconto">
+            </div>
+            <div class="col-12">
+              <button id="btnEnviar" type="submit" class="btn btn-primary">Enviar</button>
+            </div>
+          </form>
+    </div>
+    <div id="Tabela" class="container">
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Pizzaria</th>
+                <th scope="col">Promo</th>
+                <th scope="col">Valor por cm²</th>
+                <th scope="col">Total</th>
+                <th scope="col">adicionais</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">1</th>
+                <td>Dominos</td>
+                <td>Pizza grande</td>
+                <td>12,90</td>
+                <td>25,00</td>
+                <td>nenhum</td>
+              </tr>
+             
+            </tbody>
+          </table>
+    </div>
+    <script src="CalculadoraDePizza.js"></script>
+</body>
+</html>
