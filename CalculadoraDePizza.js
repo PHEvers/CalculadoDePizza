@@ -21,12 +21,20 @@ function SalvarPromo(event){
     var valor = inputValor.value;
     var medida = inputMedida.value;
     var tamanho = inputTamanho.value;
-    if (NovaPromo(pizzaria, promocao, valor, medida, tamanho)){
-
+    if (NovaPromo(pizzaria)=false){
+        console.log('teste');
     }
-}
-function NovaPromo(pizzaria, promocao, valor, medida, tamanho){
     
+}
+function NovaPromo(pizzaria){
+    var Validacao = true
+    if (pizzaria.trim().length === 0){
+        inputPizzaria.classList.add('is-invalid');
+        Validacao = false;
+    }else{
+        inputPizzaria.classList.remove('is-invalid');
+    }
+    return Validacao;
 }
 
 
