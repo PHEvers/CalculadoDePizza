@@ -1,18 +1,29 @@
-var btnEnviar = document.getElementById('btnEnviar');
-var FormPromo = document.getElementById('FormPromo');
-var Tabela = document.getElementById('Tabela');
+var btnEnviar       = document.getElementById('btnEnviar');
+var FormPromo       = document.getElementById('FormPromo');
+var Tabela          = document.getElementById('Tabela');
 
-var inputPizzaria = document.getElementById('inputPizzaria');
-var inputPromocao = document.getElementById('inputPromocao');
-var gridCheckBorda = document.getElementById('gridCheckBorda');
-var gridCheckRefri = document.getElementById('gridCheckRefri');
-var gridCheckBroto = document.getElementById('gridCheckBroto');
-var inputTamanho = document.getElementById('inputTamanho');
-var inputMedida = document.getElementById('inputMedida');
-var inputFrete = document.getElementById('inputFrete');
-var inputValor = document.getElementById('inputValor');
-var inputCupom = document.getElementById('inputCupom');
-var inputDesconto = document.getElementById('inputDesconto');
+var inputPizzaria   = document.getElementById('inputPizzaria');
+var inputPromocao   = document.getElementById('inputPromocao');
+var gridCheckBorda  = document.getElementById('gridCheckBorda');
+var gridCheckRefri  = document.getElementById('gridCheckRefri');
+var gridCheckBroto  = document.getElementById('gridCheckBroto');
+var inputTamanho    = document.getElementById('inputTamanho');
+var inputMedida     = document.getElementById('inputMedida');
+var inputFrete      = document.getElementById('inputFrete');
+var inputValor      = document.getElementById('inputValor');
+var inputCupom      = document.getElementById('inputCupom');
+var inputDesconto   = document.getElementById('inputDesconto');
+
+var corpoTabela     = document.getElementById('corpoTabela');
+var itemVazio       = document.getElementById('itemVazio');
+
+var listaPromo      = [];
+
+function atualizaLista(){
+    if (listaPromo.length === 0){
+        corpoTabela.innerHTML = '<tr> <th scope="row">1</th><td>Lista vazia</td><td>----</td><td>----</td><td>----</td><td>----</td></tr>'
+    }
+}
 
 function NovaPromo(pizzaria, promocao, tamanho, valor){
     var Validacao = true
@@ -66,3 +77,4 @@ function SalvarPromo(event){
 
 
 FormPromo.addEventListener('submit', SalvarPromo);
+window.addEventListener('load', atualizaLista);
