@@ -18,14 +18,51 @@ var corpoTabela     = document.getElementById('corpoTabela');
 var itemVazio       = document.getElementById('itemVazio');
 
 var listaPromo      = [];
+var promoTeste      = {
+    Pizzaria:   'Pizzaria teste 1',
+    Promocao:   'Promocao teste 1',
+    ValorArea:  '30',
+    Total:      '80',
+    Adicionais: 'Borda recheada',
+
+}
+
+listaPromo.push(promoTeste);
 
 function atualizaLista(){
+    corpoTabela.innerHTML = '';
     if (listaPromo.length === 0){
         corpoTabela.innerHTML = '<tr> <th scope="row">1</th><td>Lista vazia</td><td>----</td><td>----</td><td>----</td><td>----</td></tr>'
+        return;
+    }
+    for (var i = 0; i < listaPromo.length; i++){
+        var evento = listaPromo[i];
+
+        var linha = document.createElement('tr');
+        
+        var celulaPizzaria   = document.createElement('td');
+        var celulaPromo      = document.createElement('td');
+        var celularValorArea = document.createElement('td');
+        var celulaTotal      = document.createElement('td');
+        var celulaAdicionais = document.createElement('td');
+
+        celulaPizzaria.  innerText = evento.Pizzaria;
+        celulaPromo.     innerText = evento.Promocao;
+        celularValorArea.innerText = evento.ValorArea;
+        celulaTotal.     innerText = evento.Total;
+        celulaAdicionais.innerText = evento.Adicionais;
+
+        linha.appendChild(celulaPizzaria);
+        linha.appendChild(celulaPromo);
+        linha.appendChild(celularValorArea);
+        linha.appendChild(celulaTotal);
+        linha.appendChild(celulaAdicionais);
+
+        corpoTabela.appendChild(linha);
     }
 }
 
-function NovaPromo(pizzaria, promocao, tamanho, valor){
+function Validacao(pizzaria, promocao, tamanho, valor){
     var Validacao = true
     if (pizzaria.trim().length === 0 ){
         inputPizzaria.classList.add('is-invalid');
@@ -66,10 +103,18 @@ function SalvarPromo(event){
     var valor = inputValor.value;
     var medida = inputMedida.value;
 
-    if (NovaPromo(pizzaria, promocao, tamanho, valor) == false){
-        console.log('teste a');
+    if (Validacao(pizzaria, promocao, tamanho, valor) == false){
+        console.log('teste a = Falso');
     }else{
-        console.log('teste b');
+        console.log('teste b = True');
+        listaPromo.push({
+            Pizzaria:   pizzaria,
+            Promocao:   promocao,
+            ValorArea:  tamanho/valor,
+            Total:      (valor + frete),
+            Adicionais: 'Indefinido'
+        });
+        atualizaLista();
     }
     return true;
 }
