@@ -4,15 +4,10 @@ var Tabela          = document.getElementById('Tabela');
 
 var inputPizzaria   = document.getElementById('inputPizzaria');
 var inputPromocao   = document.getElementById('inputPromocao');
-var gridCheckBorda  = document.getElementById('gridCheckBorda');
-var gridCheckRefri  = document.getElementById('gridCheckRefri');
-var gridCheckBroto  = document.getElementById('gridCheckBroto');
 var inputTamanho    = document.getElementById('inputTamanho');
-var inputMedida     = document.getElementById('inputMedida');
-var inputFrete      = document.getElementById('inputFrete');
+var selectMedida    = document.getElementById('selectMedida');
 var inputValor      = document.getElementById('inputValor');
-var inputCupom      = document.getElementById('inputCupom');
-var inputDesconto   = document.getElementById('inputDesconto');
+
 
 var corpoTabela     = document.getElementById('corpoTabela');
 var itemVazio       = document.getElementById('itemVazio');
@@ -21,9 +16,9 @@ var listaPromo      = [];
 var promoTeste      = {
     Pizzaria:   'Pizzaria teste 1',
     Promocao:   'Promocao teste 1',
+    Area:       '100',
     ValorArea:  '30',
     Total:      '80',
-    Adicionais: 'Borda recheada',
 
 }
 
@@ -42,22 +37,22 @@ function atualizaLista(){
         
         var celulaPizzaria   = document.createElement('td');
         var celulaPromo      = document.createElement('td');
+        var celulaArea       = document.createElement('td');
         var celularValorArea = document.createElement('td');
         var celulaTotal      = document.createElement('td');
-        var celulaAdicionais = document.createElement('td');
 
         celulaPizzaria.  innerText = evento.Pizzaria;
         celulaPromo.     innerText = evento.Promocao;
         celularValorArea.innerText = evento.ValorArea;
         celulaTotal.     innerText = evento.Total;
-        celulaAdicionais.innerText = evento.Adicionais;
+        celulaArea.      innerText = evento.Area;
 
         linha.appendChild(celulaPizzaria);
         linha.appendChild(celulaPromo);
+        linha.appendChild(celulaArea);
         linha.appendChild(celularValorArea);
         linha.appendChild(celulaTotal);
-        linha.appendChild(celulaAdicionais);
-
+        
         corpoTabela.appendChild(linha);
     }
 }
@@ -99,20 +94,36 @@ function SalvarPromo(event){
     var pizzaria = inputPizzaria.value;
     var promocao = inputPromocao.value;
     var tamanho = inputTamanho.value;
-    var frete = inputFrete;
     var valor = inputValor.value;
-    var medida = inputMedida.value;
+    var medida = selectMedida.value;
+    var area = 0;
+    var valorArea = 0;
 
     if (Validacao(pizzaria, promocao, tamanho, valor) == false){
-        console.log('teste a = Falso');
+        console.log('Invalido');
     }else{
-        console.log('teste b = True');
+        console.log(medida);
+        console.log(pizzaria);
+        if(medida == 1){
+            console.log('diam');
+            area = (((tamanho/2)*(tamanho/2))*3.14);
+            
+        }else if(medida == 2){
+            console.log('raio');
+            area = ((tamanho*tamanho)*3.14);
+            
+        }else if(medida == 3){
+            tamanho = tamanho/(6.28)
+            console.log('perimetro');
+            area = ((tamanho*tamanho)*3.14);
+        }
+        valorArea = valor/area;
         listaPromo.push({
             Pizzaria:   pizzaria,
             Promocao:   promocao,
-            ValorArea:  tamanho/valor,
-            Total:      (valor + frete),
-            Adicionais: 'Indefinido'
+            Area:       area,
+            ValorArea:  valorArea,
+            Total:      valor,
         });
         atualizaLista();
     }
